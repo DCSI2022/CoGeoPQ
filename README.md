@@ -10,13 +10,21 @@ The guide follows one V2X-Real vehicle. Watch the bracketed target in both panel
 
 One ego vehicle and three collaborators observe the same sequence. The paired replay compares predictions from the same frozen checkpoint, ego queries and ground truth. A second vehicle from the sequence illustrates the three stages of cooperation.
 
-<!-- Insert the GitHub-generated v2x-real-inline.mp4 attachment URL here on a line by itself. -->
+
+
+https://github.com/user-attachments/assets/162dfb33-3d8b-491d-8349-e4344b18bc57
+
+
 
 ## CooperScene V+2V+I
 
 Two other vehicles and a roadside unit collaborate with the ego vehicle at an intersection. The video follows a target through consecutive ego frames and pauses on one paired example. A recorded fusion trace then shows the reference position before and after fusion, separately from the regressed detection box.
 
-<!-- Insert the GitHub-generated cooperscene-inline.mp4 attachment URL here on a line by itself. -->
+
+
+https://github.com/user-attachments/assets/a6d5899b-a68e-45d9-8522-2d3ecf69eb2e
+
+
 
 ## How cooperation works
 
