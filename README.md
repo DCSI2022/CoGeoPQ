@@ -2,27 +2,27 @@
 
 Bandwidth-constrained multimodal cooperative perception via geometry-aware probabilistic queries.
 
-CoGeoPQ lets vehicles share compact object queries under a bandwidth limit. In the guide below, follow the bracketed vehicle. Both panels use the same ego observation and ground truth. The right panel also receives queries from collaborators.
+CoGeoPQ shares compact object queries so nearby vehicles can contribute their observations under a fixed communication budget. Follow one vehicle through the CooperScene guide, from the two LiDAR views to the fused query and final detection.
 
-![An 11-second V2X-Real guide. The same target and ground truth are shown with remote queries disabled and with full CoGeoPQ. The selected frame has BEV IoU 0.64 and 0.90, respectively.](assets/preview.gif)
+![CooperScene guide following the same vehicle. At the selected frame, the ego vehicle records 60 LiDAR returns inside its ground-truth box and vehicle 2 records 2,497. After fusion the reference point is closer to the target center. The full detector also fits the vehicle more closely.](assets/cooperscene-guide.gif)
 
-*Selected V2X-Real frame 000055.* The ego LiDAR records 18 returns inside this vehicle’s ground-truth box. Its BEV IoU rises from 0.64 to 0.90 with remote queries enabled. The [V2X-Real replay](#v2x-real-vc) follows this vehicle across all 41 frames.
+*Selected example, frame 488101.* Fusion reduces the reference-point error from **0.70 m to 0.29 m** before box regression. The final box has **BEV IoU 0.22 with remote queries disabled and 0.91 with full CoGeoPQ**.
 
 ## CooperScene V+2V+I
 
-Watch the **same vehicle** from sensor observations through fusion to the final detection. At frame 488101, the ego LiDAR records 60 returns inside the target box, and one collaborating vehicle records 2,497. Fusion reduces the reference-point error from **0.70 m to 0.29 m** before box regression. The final box overlaps the ground truth more closely with remote queries enabled (**BEV IoU 0.22 to 0.91**).
+The full replay follows the same vehicle for 29 consecutive frames at an intersection, with two other vehicles and a roadside unit available to the ego vehicle. The target’s mean BEV IoU over the clip is 0.594 with remote queries disabled and 0.759 with full CoGeoPQ.
 
 https://github.com/user-attachments/assets/a6d5899b-a68e-45d9-8522-2d3ecf69eb2e
 
-Across **2,087 test samples**, the paired diagnostic shown in the video gives **37.81% BEV AP@0.5** with remote queries disabled and **73.66%** with full CoGeoPQ, using the same model weights.
+Across **2,087 test samples**, the same frozen checkpoint gives **37.81% BEV AP@0.5** with remote queries disabled and **73.66%** with full CoGeoPQ.
 
 ## V2X-Real VC
 
-The 41-frame replay includes both gains and losses on the bracketed vehicle. Its mean BEV IoU over the clip is **0.805 with remote queries disabled** and **0.776 with full CoGeoPQ**. The mechanism close-ups follow a second vehicle in the same sequence.
+**Full test set (1,253 ego samples).** Using the same checkpoint, enabling remote queries raises BEV mAP@0.5 from 33.32% to 43.55% across the three evaluated classes.
+
+**Selected replay (one vehicle, 41 frames).** At frame 000055, the ego vehicle has 18 LiDAR returns inside the target box, and enabling remote queries raises its BEV IoU from 0.64 to 0.90. Over the full clip, remote queries improve the target’s BEV IoU in some frames and reduce it in others. The mechanism close-ups follow a second vehicle in the same sequence.
 
 https://github.com/user-attachments/assets/162dfb33-3d8b-491d-8349-e4344b18bc57
-
-Across **1,253 test samples**, enabling remote queries at the same checkpoint raises **BEV mAP@0.5 from 33.32% to 43.55%**. This metric covers detections across all three evaluated classes.
 
 ## How cooperation works
 
