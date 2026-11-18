@@ -18,11 +18,11 @@ Across **2,087 test samples**, the same frozen checkpoint gives **37.81% BEV AP@
 
 ## V2X-Real VC
 
-**Full test set (1,253 ego samples).** Using the same checkpoint, enabling remote queries raises BEV mAP@0.5 from 33.32% to 43.55% across the three evaluated classes.
+**Full test set (1,253 ego samples).** Both conditions use the same frozen checkpoint and retain the ego vehicle’s LiDAR and camera queries. BEV mAP@0.5 across the three evaluated classes is **33.32% with remote queries disabled** and **43.55% with full CoGeoPQ**.
 
-**Selected replay (one vehicle, 41 frames).** At frame 000055, the ego vehicle has 18 LiDAR returns inside the target box, and enabling remote queries raises its BEV IoU from 0.64 to 0.90. Over the full clip, remote queries improve the target’s BEV IoU in some frames and reduce it in others. The mechanism close-ups follow a second vehicle in the same sequence.
+**Selected replay (one vehicle, 41 frames).** Both views show the same continuous sequence. The video pauses at frame 000055, where the ego vehicle records 18 LiDAR returns inside the target box. At that frame, the target’s BEV IoU is 0.64 with remote queries disabled and 0.90 with full CoGeoPQ. The mechanism close-ups follow a second vehicle in the same sequence.
 
-https://github.com/user-attachments/assets/162dfb33-3d8b-491d-8349-e4344b18bc57
+https://github.com/user-attachments/assets/8a0272fd-23b7-4059-a0fe-fc58794ca929
 
 ## How cooperation works
 
